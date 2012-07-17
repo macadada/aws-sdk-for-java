@@ -22,6 +22,8 @@ public class DynamoDBQueryExpression {
     private boolean scanIndexForward = true;
     private AttributeValue hashKeyValue;
     private Condition rangeKeyCondition;
+	private int limit = 0;
+    private boolean hasLimit = false;
 
 
     public DynamoDBQueryExpression(AttributeValue hashKeyValue) {
@@ -59,6 +61,19 @@ public class DynamoDBQueryExpression {
 
     public void setRangeKeyCondition(Condition rangeKeyCondition) {
         this.rangeKeyCondition = rangeKeyCondition;
+    }
+	
+	public boolean hasLimit() {
+      return hasLimit;
+    }
+    
+    public int getLimit() {
+      return limit;
+    }
+    
+    public void setLimit(int limit) {
+      this.hasLimit = true;
+      this.limit = limit;
     }
 
 }

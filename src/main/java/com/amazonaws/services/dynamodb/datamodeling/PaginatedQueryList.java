@@ -64,4 +64,8 @@ public class PaginatedQueryList<T> extends PaginatedList<T> {
         queryResult = dynamo.query(DynamoDBMapper.applyUserAgent(queryRequest));
         return mapper.marshallIntoObjects(clazz, queryResult.getItems());
     }
+	
+	public int getLoadedSize() {
+      return allResults.size();
+    }
 }

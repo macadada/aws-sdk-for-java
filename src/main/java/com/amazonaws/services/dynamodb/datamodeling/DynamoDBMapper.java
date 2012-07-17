@@ -1084,6 +1084,9 @@ public class DynamoDBMapper {
         queryRequest.setHashKeyValue(queryExpression.getHashKeyValue());
         queryRequest.setScanIndexForward(queryExpression.isScanIndexForward());
         queryRequest.setRangeKeyCondition(queryExpression.getRangeKeyCondition());
+		if (queryExpression.hasLimit()) {
+          queryRequest.setLimit(queryExpression.getLimit());
+        }
 
         return queryRequest;
     }
@@ -1092,4 +1095,5 @@ public class DynamoDBMapper {
         request.getRequestClientOptions().addClientMarker(USER_AGENT);
         return request;
     }
+	
 }
